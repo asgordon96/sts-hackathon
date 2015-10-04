@@ -21,14 +21,14 @@ public class CameraFeed : MonoBehaviour {
 		rawimage.texture = back;
 		back.Play ();
 
-		latitudeTargets = new double[] {38.645960};
-		longitudeTargets = new double[] {-90.312431};
+		latitudeTargets = new double[] {38.645422};
+		longitudeTargets = new double[] {-90.312469};
 
 		if (!Input.location.isEnabledByUser) {
 			// user doesn't have location services enabled
 			return;
 		}
-		Input.location.Start(desiredAccuracyInMeters:5.0f, updateDistanceInMeters:1.0f);
+		Input.location.Start(desiredAccuracyInMeters:1.0f, updateDistanceInMeters:1.0f);
 	}
 	
 	// Update is called once per frame
@@ -45,7 +45,7 @@ public class CameraFeed : MonoBehaviour {
 		textobject.text = String.Format("Distance: {0} ft", Math.Round(distance));
 
 		if (distance < 500) {
-			float alpha = (float)((1 - distance / 500.0f) * 0.5f);
+			float alpha = (float)((1 - distance / 500.0f) * 0.75f);
 			var color = new Color (1.0f, 0.0f, 0.0f, alpha);
 			tint.GetComponent<Image> ().color = color;
 		}
