@@ -29,13 +29,13 @@ public class CameraFeed : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		var latitude = Input.location.lastData.latitude;
+		var longitude = Input.location.lastData.longitude;
 		double dt = Time.deltaTime;
 		distance += dt;
-		textobject.text = String.Format("DISTANCE: {0} ft.", Math.Round (distance));
+		textobject.text = String.Format("Latitude: {0}", latitude);
 
 		var color = new Color (1.0f, 0.0f, 0.0f, 0.5f);
 		tint.GetComponent<Image> ().color = color;
-		//print (Input.location.lastData.latitude);
-		//print (Input.location.lastData.longitude);
 	}
 }
