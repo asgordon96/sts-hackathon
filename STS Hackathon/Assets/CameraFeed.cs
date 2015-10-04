@@ -28,7 +28,7 @@ public class CameraFeed : MonoBehaviour {
 			// user doesn't have location services enabled
 			return;
 		}
-		Input.location.Start ();
+		Input.location.Start(desiredAccuracyInMeters:5.0f, updateDistanceInMeters:1.0f);
 	}
 	
 	// Update is called once per frame
@@ -36,15 +36,16 @@ public class CameraFeed : MonoBehaviour {
 		var latitude = Input.location.lastData.latitude;
 		var longitude = Input.location.lastData.longitude;
 
+		// calculate distance based on latitude and longitude
 		var lat_distance = (latitude - latitudeTargets [0]) * 364000; // 364,000 ft/1 degree latitude
 		var cos_lat = Math.Cos(latitude * Math.PI / 180.0);
 		var long_distance = (longitude - longitudeTargets [0]) * cos_lat * 365000;
 		distance = Math.Sqrt (Math.Pow (lat_distance, 2.0f) + Math.Pow (long_distance, 2.0f));
 
-		textobject.text = String.Format("Distance: {0} ft", distance, longitude);
+		textobject.text = String.Format("Distance: {0} ft", Math.Round(distance));
 
 		if (distance < 500) {
-			float alpha = (float)(1 - distance / 500.0f);
+			float alpha = (float)((1 - distance / 500.0f) * 0.5f);
 			var color = new Color (1.0f, 0.0f, 0.0f, alpha);
 			tint.GetComponent<Image> ().color = color;
 		}
