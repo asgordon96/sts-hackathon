@@ -22,7 +22,7 @@ public class Teleport : MonoBehaviour {
   void Start() {
     startingPosition = transform.localPosition;
     SetGazedAt(false);
-	TeleportRandomly ();
+	TeleportRandomly2 ();
   }
 
   public void SetGazedAt(bool gazedAt) {
@@ -40,9 +40,13 @@ public class Teleport : MonoBehaviour {
   }
 
   public void TeleportRandomly() {
-    Vector3 direction = Random.onUnitSphere;
-    direction.y = Mathf.Clamp(direction.y, 0.5f, 1f);
-    float distance = 2 * Random.value + 1.5f;
-    transform.localPosition = direction * distance;
+	Application.LoadLevel (1);
   }
+
+	public void TeleportRandomly2() {
+		Vector3 direction = Random.onUnitSphere;
+		direction.y = Mathf.Clamp (direction.y, 0.5f, 1f);
+		float distance = 2 * Random.value + 1.5f;
+		transform.localPosition = direction * distance;
+	}
 }
