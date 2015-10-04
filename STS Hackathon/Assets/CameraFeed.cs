@@ -51,7 +51,7 @@ public class CameraFeed : MonoBehaviour {
 		}
 
 		if (distance < 20) {
-			Application.LoadLevel(0);
+			Application.LoadLevel(1);
 		}
 
 	}
