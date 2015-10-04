@@ -13,9 +13,12 @@ public class CameraFeed : MonoBehaviour {
 	public double distance;
 	public double[] latitudeTargets; 
 	public double[] longitudeTargets; 
+	public Text message;
+	public int counts;
 
 	// Use this for initialization
 	void Start () {
+		counts = 0;
 		back = new WebCamTexture (1920, 1080);
 		rawimage = GetComponent<RawImage>();
 		rawimage.texture = back;
@@ -33,6 +36,7 @@ public class CameraFeed : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		counts++;
 		var latitude = Input.location.lastData.latitude;
 		var longitude = Input.location.lastData.longitude;
 
@@ -51,8 +55,17 @@ public class CameraFeed : MonoBehaviour {
 		}
 
 		if (distance < 20) {
-			Application.LoadLevel(1);
+			message.text = "You are about to enter VR mode!";
+			Invoke("changeScene", 1.0f);
 		}
 
+		if (counts > 120) {
+			message.text = "You are about to enter VR mode!";
+			Invoke ("changeScene", 2.0f);
+		}
+	}
+
+	void changeScene() {
+		Application.LoadLevel (2);
 	}
 }
