@@ -22,7 +22,7 @@ public class CameraFeed : MonoBehaviour {
 		back.Play ();
 
 		latitudeTargets = new double[] {38.647979};
-		longitudeTargets = new double[] {90.310579};
+		longitudeTargets = new double[] {-90.310579};
 
 		if (!Input.location.isEnabledByUser) {
 			// user doesn't have location services enabled
@@ -41,7 +41,7 @@ public class CameraFeed : MonoBehaviour {
 		var long_distance = (longitude - longitudeTargets [0]) * cos_lat * 365000;
 		distance = Math.Sqrt (Math.Pow (lat_distance, 2.0f) + Math.Pow (long_distance, 2.0f));
 
-		textobject.text = String.Format("Distance: {0} ft Longitude {1}", distance, longitude);
+		textobject.text = String.Format("Distance: {0} ft", distance, longitude);
 
 		if (distance < 500) {
 			float alpha = (float)(1 - distance / 500.0f);
