@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\CameraFeed.cs" />
+     <Compile Include="Assets\Cardboard\DemoScene\Balancer.cs" />
+     <Compile Include="Assets\Cardboard\DemoScene\Spin.cs" />
      <Compile Include="Assets\Cardboard\DemoScene\Teleport.cs" />
      <Compile Include="Assets\Cardboard\Legacy\DemoScene\TeleportLegacyUI.cs" />
      <Compile Include="Assets\Cardboard\Legacy\Scripts\CardboardOnGUI.cs" />

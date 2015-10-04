@@ -22,14 +22,17 @@ public class Teleport : MonoBehaviour {
   void Start() {
     startingPosition = transform.localPosition;
     SetGazedAt(false);
+	TeleportRandomly ();
   }
 
   public void SetGazedAt(bool gazedAt) {
-    GetComponent<Renderer>().material.color = gazedAt ? Color.green : Color.red;
+	Texture bearpic = Resources.Load ("bearpic") as Texture;
+	Texture bearpic2 = Resources.Load ("bearpic2") as Texture;
+    GetComponent<Renderer>().material.mainTexture = gazedAt ? bearpic : bearpic2;
   }
 
   public void Reset() {
-    transform.localPosition = startingPosition;
+	TeleportRandomly ();
   }
 
   public void ToggleVRMode() {
