@@ -24,8 +24,8 @@ public class CameraFeed : MonoBehaviour {
 		rawimage.texture = back;
 		back.Play ();
 
-		latitudeTargets = new double[] {38.645422};
-		longitudeTargets = new double[] {-90.312469};
+		latitudeTargets = new double[] {38.648081};
+		longitudeTargets = new double[] {-90.305617};
 
 		if (!Input.location.isEnabledByUser) {
 			// user doesn't have location services enabled
