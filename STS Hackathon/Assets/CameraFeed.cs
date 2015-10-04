@@ -21,8 +21,8 @@ public class CameraFeed : MonoBehaviour {
 		rawimage.texture = back;
 		back.Play ();
 
-		latitudeTargets = new double[] {38.647979};
-		longitudeTargets = new double[] {-90.310579};
+		latitudeTargets = new double[] {38.645960};
+		longitudeTargets = new double[] {-90.312431};
 
 		if (!Input.location.isEnabledByUser) {
 			// user doesn't have location services enabled
@@ -48,6 +48,10 @@ public class CameraFeed : MonoBehaviour {
 			float alpha = (float)((1 - distance / 500.0f) * 0.5f);
 			var color = new Color (1.0f, 0.0f, 0.0f, alpha);
 			tint.GetComponent<Image> ().color = color;
+		}
+
+		if (distance < 20) {
+			Application.LoadLevel(0);
 		}
 
 	}
